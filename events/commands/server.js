@@ -1,5 +1,5 @@
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-const { GoogleSpreadsheet } = require('google-spreadsheet');
+import { GoogleSpreadsheet } from 'google-spreadsheet';
 
 const doc = new GoogleSpreadsheet('1GEmFaY7aZQ2UHHzrY1_5wGZjrCa5VOddQU5b1aPXRQc');
 await doc.useServiceAccountAuth({
