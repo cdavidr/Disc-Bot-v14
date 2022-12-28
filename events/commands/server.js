@@ -19,17 +19,14 @@ console.log(sheet.cellStats); // total cells, loaded, how many non-empty
 const rows = await sheet.getRows({offset: 0});
 const numOfMembers = rows.length;
 console.log(numOfMembers);
-// Array.from({length: 40}, () => Math.floor(Math.random() * 40))
-
 
 // Creates an Object in JSON with the data required by Discord's API to create a SlashCommand
 const create = () => {
 	const command = new SlashCommandBuilder()
-		.setName('server')
-		.setDescription(
-			'Replys with a small amount of information about this server!'
-		)
-		.setDMPermission(false);
+		.setName('pick')
+		.setDescription('Pick x people from google sheets randomly')
+		.addIntegerOption((option) => 
+			option.setName('amount').setDescription('How many?').setRequired(true));
 
 	return command.toJSON();
 };
@@ -37,6 +34,12 @@ const create = () => {
 // Called by the interactionCreate event listener when the corresponding command is invoked
 const invoke = (interaction) => {
 	const guild = interaction.guild;
+	let pickAmount = interaction.options.get('amount');
+
+	let randomizedSpots = new Array(numOfMembers).fill().map((a, i) => a = i).sort(() => Math.random() - 0.5);
+	for (const idx of randomizedSpots.slice(0, pickAmount)) {
+		console.log(rows[idx]);
+	}
 
 	// Create a MessageEmbed and add an inlined field for each property displayed in the reply message
 	const embed = new EmbedBuilder().setTitle(guild.name).addFields([
@@ -96,12 +99,9 @@ const invoke = (interaction) => {
 	// #shamelessSelfpromotion
 	embed
 		.setColor('Aqua')
-		.setFooter({ text: 'Find the source code of this bot on our GitHub!' })
 		.setTimestamp()
 		.setAuthor({
-			name: 'Developed by LiFe Development',
-			url: 'https://github.com/LiFeDevelopment',
-			iconURL: 'https://avatars.githubusercontent.com/u/89026474?s=200&v=4',
+			name: 'Random Giveaway',
 		})
 		.setImage(guild.iconURL());
 
