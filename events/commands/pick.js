@@ -40,14 +40,11 @@ const invoke = (interaction) => {
 	let winnersText = "";
 	let tagged = "";
 
-	const user = interaction.options.getUser('mary#9999');
-	console.log(user);
-
 	for (const idx of winners) {
 		winnersText += rows[idx].Discord + "," + rows[idx]['Default Burner'] + "\n";
-		tagged += `${user}` + " ";
+		let user = interaction.client.users.find(user => user.tag == rows[idx].Discord);
+		tagged += `${user.id}` + " ";
 	}
-
 
 	// Create a MessageEmbed and add an inlined field for each property displayed in the reply message
 	const embed = new EmbedBuilder().setTitle(guild.name).addFields([
