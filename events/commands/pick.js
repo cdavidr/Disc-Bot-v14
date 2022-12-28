@@ -35,6 +35,8 @@ const create = () => {
 const invoke = (interaction) => {
 	const guild = interaction.guild;
 	let pickAmount = interaction.options.get('amount');
+	console.log(pickAmount);
+	console.log(numOfMembers);
 	let randomizedSpots = new Array(numOfMembers).fill().map((a, i) => a = i).sort(() => Math.random() - 0.5);
 	let winners = randomizedSpots.slice(0, pickAmount);
 	console.log(winners);
