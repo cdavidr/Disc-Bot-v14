@@ -6,10 +6,9 @@ const create = () => {
 		.setName('roll')
 		.setDescription('WoW-like rolling')
 		.addIntegerOption((option) => 
-			option.setName('min').setDescription('From this to..')
+			option.setName('min').setDescription('From this to..'))
 		.addIntegerOption((option) => 
-			option.setName('max').setDescription("that")),
-		);
+			option.setName('max').setDescription("that"));
 
 	return command.toJSON();
 };
