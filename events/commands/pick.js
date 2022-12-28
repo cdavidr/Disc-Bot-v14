@@ -38,9 +38,10 @@ const invoke = (interaction) => {
 	let randomizedSpots = new Array(numOfMembers).fill().map((a, i) => a = i).sort(() => Math.random() - 0.5);
 	let winners = randomizedSpots.slice(0, pickAmount.value);
 	let winnersText = "";
-
+	let tagged = "";
 	for (const idx of winners) {
-		winnersText += rows[idx].Discord + "," + rows[idx]['Default Burner'] + "\n\n";
+		winnersText += rows[idx].Discord + "," + rows[idx]['Default Burner'] + "\n";
+		tagged += "@" + rows[idx].Discord + " ";
 	}
 
 	// Create a MessageEmbed and add an inlined field for each property displayed in the reply message
@@ -48,6 +49,11 @@ const invoke = (interaction) => {
 		{
 			name: 'Winners',
 			value: winnersText,
+			inline: true,
+		},
+		{
+			name: 'Tagging',
+			value: tagged,
 			inline: true,
 		},
 	]);
