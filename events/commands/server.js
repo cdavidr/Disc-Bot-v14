@@ -17,7 +17,7 @@ await sheet.loadCells(); // loads range of cells into local cache - DOES NOT RET
 console.log(sheet.cellStats); // total cells, loaded, how many non-empty
 
 const rows = await sheet.getRows({offset: 0});
-const numOfMembers = rows.size;
+const numOfMembers = rows.length;
 console.log(numOfMembers);
 // Array.from({length: 40}, () => Math.floor(Math.random() * 40))
 
