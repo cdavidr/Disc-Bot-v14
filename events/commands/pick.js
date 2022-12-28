@@ -39,11 +39,11 @@ const invoke = (interaction) => {
 	let winners = randomizedSpots.slice(0, pickAmount.value);
 	let winnersText = "";
 	let tagged = "";
-	console.log(interaction.guild.members.fetch());
+	let members = interaction.guild.members.fetch();
 
 	for (const idx of winners) {
 		winnersText += rows[idx].Discord + "," + rows[idx]['Default Burner'] + "\n";
-		let user = interaction.guild.members.cache.find(user => user.tag == rows[idx].Discord);
+		let user = members.find(user => user.tag == rows[idx].Discord);
 		tagged += `${user}` + " ";
 	}
 
