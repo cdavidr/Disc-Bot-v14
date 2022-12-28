@@ -12,6 +12,7 @@ await doc.useServiceAccountAuth({
 await doc.loadInfo(); // loads document properties and worksheets
 console.log(doc.title);
 
+const sheet = doc.sheetsByIndex[0];
 await sheet.loadCells('A1:E10'); // loads range of cells into local cache - DOES NOT RETURN THE CELLS
 console.log(sheet.cellStats); // total cells, loaded, how many non-empty
 const a1 = sheet.getCell(0, 0); // access cells using a zero-based index
