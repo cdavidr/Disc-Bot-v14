@@ -41,7 +41,7 @@ const invoke = (interaction) => {
 	let tagged = "";
 	for (const idx of winners) {
 		winnersText += rows[idx].Discord + "," + rows[idx]['Default Burner'] + "\n";
-		tagged += `<@${rows[idx].Discord}>` + " ";
+		tagged += `@${rows[idx].Discord}` + " ";
 	}
 
 	// Create a MessageEmbed and add an inlined field for each property displayed in the reply message
@@ -49,11 +49,6 @@ const invoke = (interaction) => {
 		{
 			name: 'Winners',
 			value: winnersText,
-			inline: true,
-		},
-		{
-			name: 'Tagging',
-			value: tagged,
 			inline: true,
 		},
 	]);
@@ -73,6 +68,7 @@ const invoke = (interaction) => {
 	interaction.reply({
 		embeds: [embed],
 	});
+	interaction.reply(tagged);
 };
 
 export { create, invoke };
