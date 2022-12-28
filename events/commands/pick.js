@@ -38,7 +38,9 @@ const invoke = (interaction) => {
 	let randomizedSpots = new Array(numOfMembers).fill().map((a, i) => a = i).sort(() => Math.random() - 0.5);
 	let winners = randomizedSpots.slice(0, pickAmount.value);
 	for (const idx of winners) {
-		console.log(rows[idx]);
+		console.log(rows[idx].Discord);
+		console.log(rows[idx]['Default Burner']);
+
 	}
 
 	// Create a MessageEmbed and add an inlined field for each property displayed in the reply message
