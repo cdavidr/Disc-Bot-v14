@@ -16,7 +16,7 @@ const sheet = doc.sheetsByIndex[0];
 await sheet.loadCells(); // loads range of cells into local cache - DOES NOT RETURN THE CELLS
 console.log(sheet.cellStats); // total cells, loaded, how many non-empty
 
-const rows = await sheet.getRows({offset: 1});
+const rows = await sheet.getRows({offset: 0});
 console.log(rows);
 
 
