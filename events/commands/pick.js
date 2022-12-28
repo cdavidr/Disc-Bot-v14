@@ -43,7 +43,7 @@ const invoke = (interaction) => {
 	console.log(members);
 	for (const idx of winners) {
 		winnersText += rows[idx].Discord + "," + rows[idx]['Default Burner'] + "\n";
-		let user = members.find(user => user.tag == rows[idx].Discord);
+		// let user = members.find(user => user.tag == rows[idx].Discord);
 		tagged += `${user}` + " ";
 	}
 
@@ -70,7 +70,7 @@ const invoke = (interaction) => {
 	// Reply to the user
 	interaction.reply({
 		embeds: [embed],
-		content: "Tagging " + tagged
+		// content: "Tagging " + tagged
 	});
 };
 
