@@ -41,7 +41,7 @@ const invoke = (interaction) => {
 	let tagged = "";
 	for (const idx of winners) {
 		winnersText += rows[idx].Discord + "," + rows[idx]['Default Burner'] + "\n";
-		const user = message.guild.members.cache.get(rows[idx].Discord) || message.guild.members.cache.find(m => m.user.tag.toLowerCase() == rows[idx].Discord.toLowerCase()) || message.guild.members.cache.find(m => m.nickname.toLowerCase() == rows[idx].Discord.toLowerCase())
+		const user = interaction.guild.members.cache.get(rows[idx].Discord) || message.guild.members.cache.find(m => m.user.tag.toLowerCase() == rows[idx].Discord.toLowerCase()) || message.guild.members.cache.find(m => m.nickname.toLowerCase() == rows[idx].Discord.toLowerCase())
 		tagged += `${user}` + " ";
 	}
 
