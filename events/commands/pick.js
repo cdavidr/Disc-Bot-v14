@@ -35,9 +35,10 @@ const create = () => {
 const invoke = (interaction) => {
 	const guild = interaction.guild;
 	let pickAmount = interaction.options.get('amount');
-
 	let randomizedSpots = new Array(numOfMembers).fill().map((a, i) => a = i).sort(() => Math.random() - 0.5);
-	for (const idx of randomizedSpots.slice(0, pickAmount)) {
+	let winners = randomizedSpots.slice(0, pickAmount);
+	console.log(winners);
+	for (const idx of winners) {
 		console.log(rows[idx]);
 	}
 
