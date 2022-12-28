@@ -17,7 +17,9 @@ await sheet.loadCells(); // loads range of cells into local cache - DOES NOT RET
 console.log(sheet.cellStats); // total cells, loaded, how many non-empty
 
 const rows = await sheet.getRows({offset: 0});
-console.log(rows);
+const numOfMembers = rows.size;
+console.log(numOfMembers);
+// Array.from({length: 40}, () => Math.floor(Math.random() * 40))
 
 
 // Creates an Object in JSON with the data required by Discord's API to create a SlashCommand
