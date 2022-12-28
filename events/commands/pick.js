@@ -67,8 +67,8 @@ const invoke = (interaction) => {
 	// Reply to the user
 	interaction.reply({
 		embeds: [embed],
+		content: "Tagging " + tagged
 	});
-	interaction.reply(tagged);
 };
 
 export { create, invoke };
