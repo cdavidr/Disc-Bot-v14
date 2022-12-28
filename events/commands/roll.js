@@ -5,10 +5,11 @@ const create = () => {
 	const command = new SlashCommandBuilder()
 		.setName('roll')
 		.setDescription('WoW-like rolling')
-		.addUserOption((min, max) => {
-			min.setName('min').setDescription('From this to..')
-			max.setName('max').setDescription('That.')
-		});
+		.addIntegerOption((option) => 
+			option.setName('min').setDescription('From this to..')
+		.addIntegerOption((option) => 
+			option.setName('max').setDescription("that")),
+		);
 
 	return command.toJSON();
 };
@@ -19,7 +20,7 @@ const invoke = (interaction) => {
 	const max = interaction.options.get('max');
 
 	if (min !== null && max !== null && min < max) {
-		let randNum = Math.floor(Math.random() * max) + min;
+		let randNum = Math.floor(Math.random() * max.value) + min.value;
 		interaction.reply({ 
 			content: `${randNum}` 
 		});
