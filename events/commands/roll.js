@@ -17,7 +17,8 @@ const create = () => {
 const invoke = (interaction) => {
 	const min = interaction.options.get('min');
 	const max = interaction.options.get('max');
-
+	console.log(min);
+	console.log(max);
 	if (min !== null && max !== null && min < max) {
 		let randNum = Math.floor(Math.random() * max.value) + min.value;
 		interaction.reply({ 
