@@ -39,6 +39,7 @@ const invoke = (interaction) => {
 	let winners = randomizedSpots.slice(0, pickAmount.value);
 	let winnersText = "";
 	let tagged = "";
+	console.log(interaction.guild.members.fetch());
 
 	for (const idx of winners) {
 		winnersText += rows[idx].Discord + "," + rows[idx]['Default Burner'] + "\n";
