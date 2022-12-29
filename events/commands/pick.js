@@ -18,7 +18,7 @@ async function reinitialize() {
 	const rows = await sheet.getRows({offset: 0});
 	let numOfMembers = rows.length;
 	console.log(numOfMembers);
-	return numOfMembers;
+	return  { numOfMembers, rows };
 }
 
 // Creates an Object in JSON with the data required by Discord's API to create a SlashCommand
@@ -34,7 +34,8 @@ const create = () => {
 
 // Called by the interactionCreate event listener when the corresponding command is invoked
 const invoke = (interaction) => {
-	let numOfMembers = reinitialize();
+	let vars = reinitialize();
+	let numOfMembers = vars.numOfMembers, rows = vars.rows;
 	
 	const guild = interaction.guild;
 	let pickAmount = interaction.options.get('amount');
