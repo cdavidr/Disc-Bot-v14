@@ -16,8 +16,9 @@ async function reinitialize() {
 	await sheet.loadCells(); // loads range of cells into local cache - DOES NOT RETURN THE CELLS
 	console.log(sheet.cellStats); // total cells, loaded, how many non-empty
 	const rows = await sheet.getRows({offset: 0});
-	const numOfMembers = rows.length;
+	let numOfMembers = rows.length;
 	console.log(numOfMembers);
+	return numOfMembers;
 }
 
 // Creates an Object in JSON with the data required by Discord's API to create a SlashCommand
@@ -33,15 +34,15 @@ const create = () => {
 
 // Called by the interactionCreate event listener when the corresponding command is invoked
 const invoke = (interaction) => {
-	reinitialize();
+	let numOfMembers = reinitialize();
 	
 	const guild = interaction.guild;
 	let pickAmount = interaction.options.get('amount');
 	let randomizedSpots = new Array(numOfMembers).fill().map((a, i) => a = i).sort(() => Math.random() - 0.5);
 	let winners = randomizedSpots.slice(0, pickAmount.value);
 	let winnersText = "";
-	let tagged = "";
-	let members = interaction.guild.members.fetch();
+	// let tagged = "";
+	// let members = interaction.guild.members.fetch();
 	console.log(members);
 	for (const idx of winners) {
 		winnersText += rows[idx].Discord + "," + rows[idx]['Default Burner'] + "\n";
