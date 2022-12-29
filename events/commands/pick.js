@@ -21,6 +21,15 @@ async function reinitialize() {
 	return  { numOfMembers, rows };
 }
 
+await doc.loadInfo(); // loads document properties and worksheets
+console.log(doc.title);
+const sheet = doc.sheetsByIndex[0];
+await sheet.loadCells(); // loads range of cells into local cache - DOES NOT RETURN THE CELLS
+console.log(sheet.cellStats); // total cells, loaded, how many non-empty
+const rows = await sheet.getRows({offset: 0});
+let numOfMembers = rows.length;
+console.log(numOfMembers);
+
 // Creates an Object in JSON with the data required by Discord's API to create a SlashCommand
 const create = () => {
 	const command = new SlashCommandBuilder()
@@ -34,9 +43,9 @@ const create = () => {
 
 // Called by the interactionCreate event listener when the corresponding command is invoked
 const invoke = (interaction) => {
-	let vars = reinitialize();
-	let numOfMembers = vars.numOfMembers, rows = vars.rows;
-	
+	// let vars = reinitialize();
+	// let numOfMembers = vars.numOfMembers, rows = vars.rows;
+
 	const guild = interaction.guild;
 	let pickAmount = interaction.options.get('amount');
 	let randomizedSpots = new Array(numOfMembers).fill().map((a, i) => a = i).sort(() => Math.random() - 0.5);
