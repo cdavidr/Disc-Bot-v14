@@ -43,7 +43,7 @@ const invoke = (interaction) => {
 	let winnersText = "";
 	// let tagged = "";
 	// let members = interaction.guild.members.fetch();
-	console.log(members);
+	// console.log(members);
 	for (const idx of winners) {
 		winnersText += rows[idx].Discord + "," + rows[idx]['Default Burner'] + "\n";
 		// let user = members.find(user => user.tag == rows[idx].Discord);
